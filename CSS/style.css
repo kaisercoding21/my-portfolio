@@ -5,17 +5,18 @@
 body,
 html {
   background-color: #aaa599;
+  font-size: 18px;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 :root {
   --bg-color: rgba(154, 200, 208, 0.8);
-  --secondary: rgba;
+  --links: #ffffee;
   --border: #3e4c28;
 }
 a {
-  color: #ffffee;
+  color: var(--links);
   font-size: 1.5em;
   text-decoration: none;
 }
@@ -29,8 +30,12 @@ a:hover {
   background-clip: text;
 }
 
+h1 {
+  font-size: 2.4em;
+}
+
 h2 {
-  font-size: 1.4em;
+  font-size: 2em;
 }
 
 span {
@@ -42,6 +47,7 @@ span {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  background: var(--border);
   padding: 0.25em;
 }
 
@@ -53,6 +59,7 @@ span {
 
 .links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -80,26 +87,25 @@ span {
 }
 
 .ph-text {
-  display: inline-block;
+  display: block;
   position: relative;
   text-align: center;
   font-size: 1.25em;
   font-weight: bold;
   padding: 0.85em;
-  background-color: rgba(0, 128, 128, 0.8);
-  border: 5px solid purple;
+  background-color: var(--bg-color);
   width: 20%;
   bottom: 5%;
 }
 
 .about-content {
   display: flex;
+  margin: 15px;
 }
 
 .info {
   display: inline-block;
   width: 40%;
-  align-self: center;
   margin: 0 auto;
   padding: 1.5em;
   border-right: 5px solid #3e4c28;
@@ -111,14 +117,16 @@ span {
 
 .project-content {
   display: flex;
-  height: 60%;
+  height: 80%;
 }
 
 .project {
   display: inline-block;
+  flex-wrap: wrap;
   padding: 1.5em;
   align-self: center;
-  width: 16%;
+  height: 90%;
+  width: 18%;
   border-right: 5px solid var(--border);
 }
 
@@ -162,8 +170,7 @@ span {
   background-position: 42%;
 }
 
-.card-name,
-#project-1 {
+.card-name {
   display: inline-block;
   align-content: flex-start;
   text-align: center;
@@ -175,30 +182,147 @@ span {
   background-color: var(--bg-color);
 }
 
+.card-name a {
+  font-size: 1em;
+  color: black;
+  text-decoration: none;
+}
+
 #project-1 {
-  top: 80%;
+  top: 50%;
 }
 
 .footer {
   display: flex;
-  width: 100%;
-
-  border: 2px dashed black;
-  height: 15%;
-  /* place-content: center; */
 }
 .contact {
   display: inline-block;
-  border-right: 4px solid #3e4c28;
-  align-content: center;
-  justify-content: center;
+  align-self: flex-start;
   padding: 1.4em;
-  padding-top: 3.5em;
+  width: 17.5%;
+  border-right: 5px solid #3e4c28;
 }
 
 .contact-links a {
-  display: inline-block;
+  display: inline-flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 10px;
-  border: 2px solid green;
+  margin: 30px;
+  padding: 1.4em;
+  font-size: 1.25em;
+}
+/* media queries */
+@media screen and (max-width: 768px) {
+  section {
+    padding: 30px 15px;
+  }
+  .info,
+  .project h2 {
+    flex: 1 100%;
+    text-align: center;
+  }
+  .step-info {
+    flex: 2 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .step-img {
+    flex: 0 32%;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .step-text {
+    flex: 100%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .header {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+  }
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.1em;
+  }
+  .nav-bar {
+    width: 100%;
+    display: inline-block;
+    padding-left: 0;
+    margin: 0 auto;
+  }
+
+  .info,
+  .project {
+    border: none;
+  }
+
+  .about-content {
+    display: grid;
+    padding: 0.85em;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .info,
+  .project,
+  .project-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .project-content {
+    display: grid;
+    overflow: scroll;
+  }
+
+  .project {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4 {
+    flex: 1 100%;
+    flex-wrap: wrap;
+  }
+
+  .ph-text,
+  .card-name,
+  #project-1 {
+    flex: 1 20%;
+    font-size: 0.55em;
+  }
+
+  .footer {
+    display: grid;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact {
+    display: inline-block;
+    align-self: center;
+    margin: 0 auto;
+    width: 80%;
+    flex: 2 100%;
+    font-size: 0.85em;
+    border-right: none;
+    border-bottom: 3px solid var(--border);
+  }
+
+  .contact-links {
+    flex: 1 100%;
+    flex-wrap: wrap;
+    width: 100%;
+    align-self: center;
+    font-size: 0.65em;
+    padding-left: 0;
+  }
 }
